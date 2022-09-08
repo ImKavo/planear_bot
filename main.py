@@ -18,6 +18,7 @@
 # if __name__ == '__main__':
 #     aiogram.executor.start_polling(dp, skip_updates=True)
 
+import os
 import datetime
 import logging
 import aiogram.utils.markdown as md
@@ -30,7 +31,7 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 
 logging.basicConfig(level=logging.INFO)
 
-TOKEN = "5532876387:AAGKhiyMgftIJmHgPDhQLBb5GciXWCk7FEA"  #TODO: move to .bat or .sh file
+TOKEN = os.getenv('API_KEY')
 
 bot = Bot(token=TOKEN)
 
