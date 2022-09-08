@@ -28,12 +28,13 @@ from aiogram.dispatcher import FSMContext
 from aiogram.types import ParseMode
 from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.filters.state import State, StatesGroup
+from bot_config import API_KEY
 
 logging.basicConfig(level=logging.INFO)
 
-TOKEN = os.getenv('API_KEY')
+TOKEN = API_KEY
 
-bot = Bot(token=TOKEN)
+bot = Bot(token=API_KEY)
 
 # Initializing a memory storage
 storage = MemoryStorage()
