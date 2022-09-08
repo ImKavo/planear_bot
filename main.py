@@ -1,24 +1,3 @@
-# import aiogram
-# import logging
-# from aiogram.contrib.fsm_storage.memory import MemoryStorage
-#
-#
-# token = '5532876387:AAGKhiyMgftIJmHgPDhQLBb5GciXWCk7FEA'
-# logging.basicConfig(level=logging.INFO)
-# bot = aiogram.Bot(token=token)
-# storage = MemoryStorage()
-# dp = aiogram.Dispatcher(bot, storage=storage)
-#
-#
-# @dp.message_handler()
-# async def e(message: aiogram.types.Message):
-#     await bot.send_message(message.chat.id, message.text)
-#
-#
-# if __name__ == '__main__':
-#     aiogram.executor.start_polling(dp, skip_updates=True)
-
-import os
 import datetime
 import logging
 import aiogram.utils.markdown as md
@@ -53,20 +32,12 @@ async def command_start(message: types.Message):
     """
     Conversation's entry point
     """
-    await bot.send_message(message.chat.id, ('Hello, {user}').format(user=message.from_user.full_name))
+    await bot.send_message(message.chat.id, 'Hello, {user}'.format(user=message.from_user.full_name))
 
     # Configure ReplyKeyboardMarkup
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, selective=True, one_time_keyboard=True)
     markup.add("Remind me", "Exit")
     await bot.send_message(message.chat.id, "What can i do for ya?", reply_markup=markup)
-
-
-# @dp.message_handler()
-# async def echo(message: types.Message):
-#     """Echo function"""
-#     # await bot.send_message(message.message_id, message.text)
-#     # await bot.send_message(message.chat.id, message.text)
-#     await message.answer(message.text)
 
 
 @dp.message_handler(commands=['test'])
@@ -97,8 +68,6 @@ async def process_case_text(message: types.Message, state: FSMContext):
         data['text'] = message.text
 
         await Case.next()
-
-        # await message.reply('Okay, now choose the date for your plan\n(type the date in format "YYYY-MM-DD")')
 
         await bot.send_message(
             message.chat.id,
