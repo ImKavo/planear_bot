@@ -97,10 +97,11 @@ async def process_case_text(message: types.Message, state: FSMContext):
             md.text(
                 md.text('Almost completed,'),
                 md.text('now - choose the time for your plan'),
-                md.text(md.bold('(type the time in format "HH:MM:SS")')),
+                md.bold('(type the time in format "HH:MM:SS")'),
                 md.text('for example: 12:00:00'),
                 sep='\n',
-            )
+            ),
+            parse_mode=ParseMode.MARKDOWN,
         )
 
 
